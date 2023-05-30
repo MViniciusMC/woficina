@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        .confirmation {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .confirmation h2 {
+            margin-top: 0;
+        }
+
+        .confirmation p {
+            margin-bottom: 20px;
+        }
+
+        .confirmation input[type="submit"] {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .confirmation input[type="submit"]:hover {
+            background-color: #cc0000;
+        }
+
+        .confirmation a {
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        .confirmation a:hover {
+            background-color: #ddd;
+        }
+    </style>
+
+    <div class="confirmation">
+        <h2>Confirmação de Remoção</h2>
+        <p>Deseja confirmar a remoção do cliente <strong>{{ cliente.nome }}</strong>?</p>
+        <form method="POST" >
+            {% csrf_token %}
+            <div class="buttons">
+                <input type="submit" value="Confirmar" name="confirmacao" class="confirm-btn">
+                <a href="{% url 'lista_de_clientes' nome_da_oficina=nome_da_oficina chave=chave%}" class="cancel-btn">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+

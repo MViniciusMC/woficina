@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .gradient-column {
+        background: linear-gradient(to bottom, #007BFF, #0056b3);
+        height: 100vh;
+    }
+
+    .center-column {
+        display: flex;
+        flex-direction: column;
+        
+        height: 100vh;
+        
+    }
+
+    h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        font-size: 60px;
+        
+    }
+
+    .form-control {
+        width: 90%;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 gradient-column"></div>
+        <div class="col-md-6 center-column">
+            <h1>Serviço</h1>
+            
+            <form method='post' >
+               {% csrf_token %}
+		<div class="form-group">
+                    <label for="inputGrande">Digite até 300 caracteres:</label>
+                    <textarea class="form-control" id="inputGrande" name="servico" rows="5" maxlength="150"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inputValorPecas">Valor das Peças:</label>
+                    <input type="number" step="any" class="form-control" id="inputValorPecas" name="valor_pecas" placeholder="Valor das peças">
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputValorServico">Valor do Serviço:</label>
+                    <input type="number"  step="any" class="form-control" id="inputValorServico" name="valor_servico" placeholder="Valor do serviço">
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputDataEntrega">Data de Previsão de Entrega:</label>
+                    <input type="datetime-local" class="form-control" id="inputDataEntrega" name="data_entrega" placeholder="Data de previsão de entrega">
+                </div>
+                
+
+                
+                <button type="submit" class="btn btn-primary">Enviar para Servico</button>
+            </form>
+        </div>
+        <div class="col-md-3 gradient-column"></div>
+    </div>
+</div>
+
+<!-- Inclua os arquivos JavaScript do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+{% endblock %}
+

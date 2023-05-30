@@ -1,64 +1,135 @@
-{% load static%}
-<html>
-	<head>
-	<title> Oficina </title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	</head>
+{% load static %}
 
-	<body>  
-		<style>
-			.page{
-			display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    background-color: #480ca8;
-    padding: 1rem;
-    margin-bottom: 1rem;
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBoficina - Início</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'imagem/entrada.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
 
-			}
-		.elemento{
-		margin-bottom:70px
-			}
-		.elemento2{
-		margin-top:50px
-			}
-		</style>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-		
-			
-			<div class='page'>
-				<div class= 'row align-items-center elemento' >
-					<div class='col-md'>
-						<div class='card' >
-							<div class='card-body'>
-								<h1>Bem vindo, a WEBoficina</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class='row align-items-center elemento2'>
-					<div class='col-sm'></div>	
-					<div class='col-md-12 align-self-center'>
-						<div class="card">
-  							<div class="card-body text-center">
-								<h1>Faça o login para continuar</h1>
-  							
-							
-								<a  href="{%url 'login'%}"><button class='btn btn-dark'>Ir para login</button></a>
-							</div>
-						</div>
-					</div>
-					<div class='col-sm'></div>
-	
-				</div>
-			</div>
-			
-	</body>
-	</html>
+        .container {
+            padding-top: 50px;
+            background-color: #002b36;
+        }
+
+        .blog-item {
+            margin-bottom: 50px;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+            background-color: #002b36;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            padding: 20px;
+        }
+
+        .blog-item img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .texto-card{
+        color: #fff;
+        
+        }
+        h2{
+        color:#2aa198;
+        }
+
+        .weboficina-heading {
+            text-align: center;
+            font-size: 65px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #007bff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="weboficina-heading">WEBoficina</h1>
+        <div class="login-link" style="text-align: right; font-size: 24px;">
+            <a href="{% url 'login' %}" style="color: #fff; text-decoration: none; border-bottom: 1px solid #fff;">Login</a>
+        </div>
+        <div class="blog-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Agendamento</h2>
+                    <p class="texto-card">
+                        Agende os serviços de manutenção dos veículos de forma prática e organizada. 
+                        O sistema de agendamento do WEBoficina permite a marcação de horários, 
+                        acompanhamento dos serviços em andamento e notificações aos clientes.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'imagem/agendamento.jpg' %}" alt="Agendamento">
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static 'imagem/controle_cliente.jpg' %}" alt="Controle de Clientes">
+                </div>
+                <div class="col-md-6">
+                    <h2>Controle de Clientes</h2>
+                    <p class="texto-card">
+                        Gerencie os clientes da oficina, seus veículos, histórico de serviços e dados de contato. 
+                        Com o módulo de controle de clientes do WEBoficina, você terá todas as informações 
+                        necessárias para um atendimento personalizado e eficiente.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Controle de Estoque</h2>
+                    <p class="texto-card">
+                        Mantenha o controle do estoque de peças, registre entradas e saídas, e organize as informações. 
+                        Com o módulo de controle de estoque do WEBoficina, você terá uma visão clara do estoque disponível, 
+                        facilitando a reposição de peças e evitando falta de itens essenciais.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'imagem/controle_estoque.jpg' %}" alt="Controle de Estoque">
+                </div>
+            </div>
+        </div>
+        <div class="login-link" style="text-align: right; font-size: 24px;">
+            <a href="{% url 'login' %}" style="color: #fff; text-decoration: none; border-bottom: 1px solid #fff;">Login</a>
+        </div>
+        
+    </div>
+
+    <footer class="footer">
+        <p>Entre em contato: exemplo@email.com</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

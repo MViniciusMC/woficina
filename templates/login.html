@@ -28,12 +28,16 @@
 					<div class='col-md-12 align-self-center'>
 						<div class="card align-items-center">
   							<div class="card-body text-center">
-  							<form method="post" action="{% url 'lista_de_clientes' %}">
+  							<form method="post" >
 									{% csrf_token %}
+									<label>NOME DA OFICINA:</label>
+									<input type="text" name="nome_oficina" id="nome_oficina" class="form-control" aria-label="login" aria-describedby="inputGroup-sizing-default">
 									<label>LOGIN:</label>
   								<input type="text" name='usuario' id='usuario' class="form-control" aria-label="login" aria-describedby="inputGroup-sizing-default">
 									<label class='text-center'>SENHA:</label>
   								<input type="password" name ='senha'id='senha' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  								<label class='text-center'>CHAVE:</label>
+  								<input type="text" name ='chave' id='senha' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 									<button class='btn btn-primary submit'>Entrar</button>
 								</form>
 								</div>

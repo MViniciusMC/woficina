@@ -1,0 +1,36 @@
+{%load static%}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">WEBOFICINA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                    <a class="nav-link" href="">Inicio <span class="sr-only">(página atual)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="banco" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        IR PARA
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			    <a class="dropdown-item" href="{% url 'em_servico' nome_da_oficina=nome_da_oficina  chave=chave%}">Veículos em serviço</a>    
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'lista_de_clientes' nome_da_oficina=nome_da_oficina chave=chave%}">Banco de Clientes</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'agenda' nome_da_oficina=nome_da_oficina %}">Agenda</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse">
+            	<a href= "{% url 'novo_cliente' nome_da_oficina=nome_da_oficina chave=chave %}" ><button class="btn btn-outline-primary my-2 my-sm-0" type='submit'>Novo Cliente</button></a>
+            </div>
+            <form class="form-inline my-2 my-lg-0" method="post">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" placeholder="Chassi" name="chassi">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+
+

@@ -1,76 +1,10 @@
-{%load static%}
-<html>
-<head>
-    <title>Clientes</title>
-    <!-- Inclua os arquivos CSS do Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style>
-        body {
-            background-image: url("{% static 'imagem/lista_de_clientes.jpeg' %}");
-            background-size: cover;
-        }
-        .container {
-            margin-top: 50px;
-            text-align: center;
-        }
-        .table {
-            margin: 0 auto;
-            width: 80%;
-            background-color: #FFFFFF;
-        }
-        .table th,
-        .table td {
-            vertical-align: middle;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-        .table th {
-            background-color: #f8f9fa;
-        }
-        .more-button {
-            background-color: #007BFF;
-            color: #FFFFFF;
-            border: none;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .more-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">WEBOFICINA</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="">Inicio <span class="sr-only">(página atual)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="banco" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        IR PARA
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Veículos em serviço</a>    
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{%url 'lista_de_clientes'%}">Banco de Clientes</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href= "{%url 'agenda'%}" >Agenda</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>
-        </div>
-    </nav>
+	{% include 'partials/_table.html'%}
+	{%include 'partials/_navbar2.html'%} 
 
     <div class="container">
         <h1 class="mt-4">Lista de Clientes</h1>
@@ -82,6 +16,10 @@
                     <th scope="col">Placa</th>
                     <th scope="col">Chassi</th>
                     <th scope="col">Telefone</th>
+                    <th scope="col">ult. Serv</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">remover</th>
+           	
                 </tr>
             </thead>
             <tbody>
@@ -92,12 +30,15 @@
                     <td>{{ cliente.cpf }}</td>
                     <td>{{ cliente.placa }}</td>
                     <td>{{ cliente.chassi }}</td>
-                    <td>{{ cliente.telefone }}</td>             
+                    <td>{{ cliente.telefone }}</td>    
+                    <td>{{ cliente.servico }}</th>  
+                    <td> <a href="{% url 'editar_cliente' nome_da_oficina=nome_da_oficina cliente_id=cliente.id chave=chave  %}"><button class="btn btn-primary">+</button></a></td>
+                    <td><a href="{% url 'remover_do_banco_de_dados' nome_da_oficina=nome_da_oficina cliente_id=cliente.id chave=chave %}"  ><button class="btn btn-danger">-</button></td></a>       
                 </tr>
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td colspan="3">Nenhum cliente encontrado.</td>
+                    <td colspan="10">Nenhum cliente encontrado.</td>
                 </tr>
                 {% endif %}
             </tbody>
@@ -108,5 +49,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
-</html>
+{% endblock  %}
 
